@@ -1,0 +1,14 @@
+<openpnp-packages>
+   <package id="0402" description="0402">
+   </package>
+   <package id="0603" description="0603">
+   </package>
+   <package id="0805" description="0805">
+   </package>
+   <package id="1206" description="1206">
+   </package>
+   <package id="2012" description="2012">
+   </package>
+   <package id="TQFP-64" description="TQFP-64">
+   </package>
+</openpnp-packages>

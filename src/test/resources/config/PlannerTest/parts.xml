@@ -1,0 +1,14 @@
+<openpnp-parts>
+   <part id="0402" name="" height-units="Millimeters" height="0.1" package-id="0402">
+   </part>
+   <part id="0603" name="" height-units="Millimeters" height="0.2" package-id="0603">
+   </part>
+   <part id="0805" name="" height-units="Millimeters" height="0.3" package-id="0805">
+   </part>
+   <part id="1206" name="" height-units="Millimeters" height="0.5" package-id="1206">
+   </part>
+   <part id="2012" name="" height-units="Millimeters" height="0.5" package-id="2012">
+   </part>
+   <part id="TQFP-64" name="" height-units="Millimeters" height="0.5" package-id="TQFP-64">
+   </part>
+</openpnp-parts>

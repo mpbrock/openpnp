@@ -1,0 +1,43 @@
+<openpnp-board version="1.1" name="planner.board.xml">
+   <dimensions units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+   <fiducials/>
+   <placements>
+      <placement version="1.2" id="1" side="Top" part-id="0402" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="2" side="Top" part-id="0402" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="3" side="Top" part-id="0603" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="4" side="Top" part-id="0603" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="5" side="Top" part-id="0805" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="6" side="Top" part-id="0805" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="7" side="Top" part-id="1206" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="8" side="Top" part-id="1206" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="9" side="Top" part-id="2012" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="10" side="Top" part-id="2012" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="11" side="Top" part-id="TQFP-64" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+      <placement version="1.2" id="12" side="Top" part-id="TQFP-64" type="Place" check-fids="false">
+         <location units="Millimeters" x="0.0" y="0.0" z="0.0" rotation="0.0"/>
+      </placement>
+   </placements>
+   <solder-paste-pads/>
+</openpnp-board>
