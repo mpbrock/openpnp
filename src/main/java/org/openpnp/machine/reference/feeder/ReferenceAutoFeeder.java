@@ -29,6 +29,7 @@ import org.openpnp.model.Location;
 import org.openpnp.spi.Actuator;
 import org.openpnp.spi.Nozzle;
 import org.openpnp.spi.PropertySheetHolder;
+import org.openpnp.util.MovableUtils;
 import org.pmw.tinylog.Logger;
 import org.simpleframework.xml.Attribute;
 
@@ -74,6 +75,10 @@ public class ReferenceAutoFeeder extends ReferenceFeeder {
         if (actuator == null) {
             throw new Exception("Feed failed. Unable to find an actuator named " + actuatorName);
         }
+
+        // make sure we move to where we need to pick from....
+        MovableUtils.moveToLocationAtSafeZ(nozzle, getPickLocation());
+
         if (actuatorType == ActuatorType.Boolean) {
             actuator.actuate(actuatorValue != 0);
         }
