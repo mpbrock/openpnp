@@ -19,8 +19,6 @@
 
 package org.openpnp.machine.reference.feeder;
 
-import javax.swing.Action;
-
 import org.openpnp.gui.support.Wizard;
 import org.openpnp.machine.reference.ReferenceFeeder;
 import org.openpnp.machine.reference.ReferenceNozzle;
@@ -31,37 +29,13 @@ import org.openpnp.model.Location;
 import org.openpnp.spi.Actuator;
 import org.openpnp.spi.Nozzle;
 import org.openpnp.spi.PropertySheetHolder;
+import org.openpnp.util.MovableUtils;
 import org.pmw.tinylog.Logger;
 import org.simpleframework.xml.Attribute;
 
-public class ReferenceAutoFeeder extends ReferenceFeeder {
-    public enum ActuatorType {
-        Double,
-        Boolean
-    }
-    
-    @Attribute(required=false)
-    protected String actuatorName;
-    
-    @Attribute(required=false)
-    protected ActuatorType actuatorType = ActuatorType.Double;
-    
-    @Attribute(required=false)
-    protected double actuatorValue;
+import javax.swing.*;
 
-    @Attribute(required=false)
-    protected String postPickActuatorName;
-    
-    @Attribute(required=false)
-    protected ActuatorType postPickActuatorType = ActuatorType.Double;
-    
-    @Attribute(required=false)
-    protected double postPickActuatorValue;
-
-    @Override
-    public Location getPickLocation() throws Exception {
-        return location;
-    }
+public class ZevatechAutoFeeder extends ReferenceAutoFeeder {
 
     @Override
     public void feed(Nozzle nozzle) throws Exception {
@@ -76,6 +50,9 @@ public class ReferenceAutoFeeder extends ReferenceFeeder {
         if (actuator == null) {
             throw new Exception("Feed failed. Unable to find an actuator named " + actuatorName);
         }
+
+        // make sure we move to where we need to pick from....
+        MovableUtils.moveToLocationAtSafeZ(nozzle, getPickLocation());
 
         if (actuatorType == ActuatorType.Boolean) {
             actuator.actuate(actuatorValue != 0);
@@ -105,94 +82,8 @@ public class ReferenceAutoFeeder extends ReferenceFeeder {
             }
         }
     }
-    
-    @Override
-    public void postPick(Nozzle nozzle) throws Exception {
-        if (postPickActuatorName == null || postPickActuatorName.equals("")) {
-            return;
-        }
-        Actuator actuator = nozzle.getHead().getActuatorByName(postPickActuatorName);
-        if (actuator == null) {
-            actuator = Configuration.get().getMachine().getActuatorByName(postPickActuatorName);
-        }
-        if (actuator == null) {
-            throw new Exception("Post pick failed. Unable to find an actuator named " + postPickActuatorName);
-        }
-        if (postPickActuatorType == ActuatorType.Boolean) {
-            actuator.actuate(postPickActuatorValue != 0);
-        }
-        else {
-            actuator.actuate(postPickActuatorValue);
-        }
-    }
-    
-    public String getActuatorName() {
-        return actuatorName;
-    }
-
-    public void setActuatorName(String actuatorName) {
-        this.actuatorName = actuatorName;
-    }
-
-    public ActuatorType getActuatorType() {
-        return actuatorType;
-    }
-
-    public void setActuatorType(ActuatorType actuatorType) {
-        this.actuatorType = actuatorType;
-    }
-
-    public double getActuatorValue() {
-        return actuatorValue;
-    }
-
-    public void setActuatorValue(double actuatorValue) {
-        this.actuatorValue = actuatorValue;
-    }
-
-    public String getPostPickActuatorName() {
-        return postPickActuatorName;
-    }
-
-    public void setPostPickActuatorName(String postPickActuatorName) {
-        this.postPickActuatorName = postPickActuatorName;
-    }
-
-    public ActuatorType getPostPickActuatorType() {
-        return postPickActuatorType;
-    }
-
-    public void setPostPickActuatorType(ActuatorType postPickActuatorType) {
-        this.postPickActuatorType = postPickActuatorType;
-    }
-
-    public double getPostPickActuatorValue() {
-        return postPickActuatorValue;
-    }
-
-    public void setPostPickActuatorValue(double postPickActuatorValue) {
-        this.postPickActuatorValue = postPickActuatorValue;
-    }
 
     @Override
-    public Wizard getConfigurationWizard() {
-        return new ReferenceAutoFeederConfigurationWizard(this);
-    }
-
-    @Override
-    public String getPropertySheetHolderTitle() {
-        return getClass().getSimpleName() + " " + getName();
-    }
-
-    @Override
-    public PropertySheetHolder[] getChildPropertySheetHolders() {
-        return null;
-    }
-
-    @Override
-    public Action[] getPropertySheetHolderActions() {
-        return null;
-    }
-
+    public boolean getDoesFeederDoPick() { return true; }
 
 }

@@ -620,8 +620,13 @@ public class ReferencePnpJobProcessor extends AbstractPnpJobProcessor {
             
             ++totalPartsPlaced;
 
-            // Pick
-            nozzle.pick(part);
+
+            // some feeders already do the pick internally as part of the feed process, so don't bother calling pick again
+            if(!feeder.getDoesFeederDoPick())
+            {
+                // Pick
+                nozzle.pick(part);
+            }
 
             // Retract
             nozzle.moveToSafeZ();
