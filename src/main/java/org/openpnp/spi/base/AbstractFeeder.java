@@ -98,4 +98,6 @@ public abstract class AbstractFeeder extends AbstractModelObject implements Feed
     }
     
     public void postPick(Nozzle nozzle) throws Exception { }
+
+    public boolean getDoesFeederDoPick() { return false; }
 }
