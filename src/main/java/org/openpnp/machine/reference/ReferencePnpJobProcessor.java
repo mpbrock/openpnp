@@ -774,7 +774,7 @@ public class ReferencePnpJobProcessor extends AbstractPnpJobProcessor {
 
         if (parkWhenComplete) {
             fireTextStatus("Park nozzle.");
-            MovableUtils.moveToLocationAtSafeZ(head.getDefaultNozzle(), head.getParkLocation());
+            MovableUtils.moveToLocationAtSafeZ(head.getDefaultNozzle(), head.getParkLocation(), 25);
         }
         
         double dtSec = (System.currentTimeMillis() - startTime)/1000.0;
