@@ -63,9 +63,9 @@ public class ZevatechAutoFeeder extends ReferenceAutoFeeder {
 
         ReferenceNozzle refNozzle = (ReferenceNozzle) nozzle;
         Actuator VacuumSenseActuator = nozzle.getHead().getActuatorByName(refNozzle.getVacuumSenseActuatorName());
-        if (actuator != null) {
+        if (VacuumSenseActuator != null) {
             ReferenceNozzleTip nt = refNozzle.getNozzleTip();
-            double vacuumLevel = Double.parseDouble(actuator.read());
+            double vacuumLevel = Double.parseDouble(VacuumSenseActuator.read());
             if (refNozzle.isInvertVacuumSenseLogic()) {
                 if (vacuumLevel > nt.getVacuumLevelPartOn()) {
                     throw new Exception(String.format(
